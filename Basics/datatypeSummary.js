@@ -17,11 +17,22 @@ console.log(id1 == id2);
 const bigNum = 4723462397341234908n; // 7. BigInt (ES11)
 
 //NON PRIMITIVE DATA TYPES / Call by Reference
-// 1. Object
-// 2. Function
-// 3. Array
+
+let myDetails = {
+  name: "Usama", // 1. Object
+  age: 20,
+  isMale: true,
+};
+
+const myFunction = function (params) {
+  console.log("Hello World"); // 2. Function
+};
+
+const heroes = ["Ironman", "Spiderman", "Superman"]; // 3. Array
+
 // 4. Date
 // 5. RegExp
 // 6. Map
 
 //JavaScript is a dynamic language and not static, which means that variables can hold values of different types during runtime. Unlike languages such as Typescript or Java, you don't need to declare the data type of a variable explicitly.
+
