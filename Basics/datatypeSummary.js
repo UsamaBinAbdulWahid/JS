@@ -29,10 +29,16 @@ const myFunction = function (params) {
 };
 
 const heroes = ["Ironman", "Spiderman", "Superman"]; // 3. Array
-
 // 4. Date
 // 5. RegExp
 // 6. Map
 
 //JavaScript is a dynamic language and not static, which means that variables can hold values of different types during runtime. Unlike languages such as Typescript or Java, you don't need to declare the data type of a variable explicitly.
 
+// Stack (Primitive Data Types) and Heap (Non-Primitive Data Types)
+// Primitive Data Types are stored in Stack, whereas Non-Primitive Data Types are stored in Heap.
+// Stack is faster than Heap, because it is directly accessible, whereas Heap is not directly accessible.
+// Primitive Data Types are immutable, whereas Non-Primitive Data Types are mutable.
+// Primitive Data Types are passed by value, whereas Non-Primitive Data Types are passed by reference.
+// Primitive Data Types are stored in fixed memory, whereas Non-Primitive Data Types are stored in dynamic memory.
+// Primitive Data Types are stored in memory, whereas Non-Primitive Data Types are stored in memory address.
