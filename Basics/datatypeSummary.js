@@ -1,44 +1,108 @@
-//PRIMITIVE DATA TYPES / Call by Value
+/* 
+ ****************1. Primitive Data Types (Call by Value)********************
 
-const num = 23; // 1. Number
+🔹 Stored in Stack Memory (Faster, fixed memory)
+🔹 Immutable (Cannot be changed once created)
+🔹 Copied by Value (Each variable gets its own separate copy)
+*/
 
-const str = "Hello World"; // 2. String
+// ✅ 1. Number
+const num = 23;  
 
-const isLoggedIn = false; // 3. Boolean
+// ✅ 2. String
+const str = "Hello World";  
 
-let val; // 4. Undefined, when we don't give any value to a variable
+// ✅ 3. Boolean
+const isLoggedIn = false;  
 
-const temp = null; // 5. Null
+// ✅ 4. Undefined (No value assigned)
+let val;  
+console.log(val); // Output: undefined  
 
-const id1 = Symbol("123"); // 6. Symbol (ES6), Object with unique identifier, Soo Output will be
-const id2 = Symbol("123"); // different, like in this case Output: false, even though both are same
-console.log(id1 == id2);
+// ✅ 5. Null (Empty value, explicitly set)
+const temp = null;  
+console.log(temp); // Output: null  
 
-const bigNum = 4723462397341234908n; // 7. BigInt (ES11)
+// ✅ 6. Symbol (ES6) - Unique identifiers
+const id1 = Symbol("123"); 
+const id2 = Symbol("123"); 
+console.log(id1 == id2); // Output: false (Each symbol is unique)
 
-//NON PRIMITIVE DATA TYPES / Call by Reference
+// ✅ 7. BigInt (ES11) - For large numbers beyond Number.MAX_SAFE_INTEGER
+const bigNum = 4723462397341234908n;  
+console.log(bigNum + 2n); // Output: 4723462397341234910n
 
+/*
+💡 Important Notes on Primitive Data Types:
+
+    Symbols are always unique, even if they have the same description.
+    null is an intentional empty value, while undefined means no value was assigned.
+    BigInt is used for very large numbers that cannot be represented using the normal Number type.
+*/
+//✅ Example of Stack (Call by Value)
+let x = 10;
+let y = x; // Copying value of x into y
+y = 20;
+
+console.log(x); // Output: 10 (Original remains unchanged)
+console.log(y); // Output: 20 (Only copy changed)
+
+
+
+/*
+*************2. Non-Primitive (Reference) Data Types (Call by Reference)*************
+
+🔹 Stored in Heap Memory (Slower, dynamic memory)
+🔹 Mutable (Can be changed after creation)
+🔹 Copied by Reference (Different variables point to the same memory location)
+*/
+// ✅ 1. Object - Key-Value Pair
 let myDetails = {
-  name: "Usama", // 1. Object
+  name: "Usama",
   age: 20,
   isMale: true,
 };
+console.log(myDetails.name); // Output: "Usama"
 
-const myFunction = function (params) {
-  console.log("Hello World"); // 2. Function
+// ✅ 2. Function (Functions are also objects in JavaScript)
+const myFunction = function () {
+  console.log("Hello World");
 };
+myFunction(); // Output: "Hello World"
 
-const heroes = ["Ironman", "Spiderman", "Superman"]; // 3. Array
-// 4. Date
-// 5. RegExp
-// 6. Map
+// ✅ 3. Array - Collection of Elements
+const heroes = ["Ironman", "Spiderman", "Superman"];
+console.log(heroes[1]); // Output: "Spiderman"
 
-//JavaScript is a dynamic language and not static, which means that variables can hold values of different types during runtime. Unlike languages such as Typescript or Java, you don't need to declare the data type of a variable explicitly.
+// ✅ 4. Date Object
+const today = new Date();
+console.log(today); // Output: Current date and time
 
-// Stack (Primitive Data Types) and Heap (Non-Primitive Data Types)
-// Primitive Data Types are stored in Stack, whereas Non-Primitive Data Types are stored in Heap.
-// Stack is faster than Heap, because it is directly accessible, whereas Heap is not directly accessible.
-// Primitive Data Types are immutable, whereas Non-Primitive Data Types are mutable.
-// Primitive Data Types are passed by value, whereas Non-Primitive Data Types are passed by reference.
-// Primitive Data Types are stored in fixed memory, whereas Non-Primitive Data Types are stored in dynamic memory.
-// Primitive Data Types are stored in memory, whereas Non-Primitive Data Types are stored in memory address.
+// ✅ 5. Regular Expression (RegExp)
+const regex = /hello/;
+console.log(regex.test("hello world")); // Output: true
+
+// ✅ 6. Map - Key-Value Pair but Maintains Order
+const myMap = new Map();
+myMap.set("name", "Usama");
+console.log(myMap.get("name")); // Output: "Usama"
+
+//✅ Example of Heap (Call by Reference)
+let obj1 = { name: "Usama" };
+let obj2 = obj1; // Reference is copied, not value
+obj2.name = "Ali";
+
+console.log(obj1.name); // Output: "Ali"
+console.log(obj2.name); // Output: "Ali"
+
+
+
+
+/*
+🚀 Final Takeaways
+
+✔ Primitive Data Types (Number, String, Boolean, etc.) are stored in Stack, immutable, and passed by Value.
+✔ Non-Primitive Data Types (Objects, Arrays, Functions, etc.) are stored in Heap, mutable, and passed by Reference.
+✔ Stack is faster than Heap, but Heap allows for dynamic memory allocation.
+✔ Always be careful when modifying objects because changes affect all references.
+*/

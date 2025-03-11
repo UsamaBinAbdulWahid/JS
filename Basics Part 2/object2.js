@@ -1,51 +1,80 @@
-const newUser = {} //Non Singleton Object
-console.log(newUser);
-const newChar = new Object(); //Singleton Object
-console.log(newChar);  
-//We will get same empty object from both methods
+// ✅ Creating Objects in JavaScript
 
-//Now we are going to give some values to the object newUser
-newUser.id = "123"
-newUser.name = "Usama"
-newUser.isLoggedIn = true
-console.log(newUser) //As we can see, new user has all the values that we defined early
+const newUser = {}; // ❌ Non-Singleton Object (Preferred way to create objects)
+console.log(newUser); // Output: {} (Empty object)
 
+const newChar = new Object(); // ✅ Singleton Object (Created using Object constructor)
+console.log(newChar); // Output: {} (Same empty object, but using constructor)
+
+// ✅ Adding properties to an object dynamically
+newUser.id = "123"; // Adding a key-value pair to newUser
+newUser.name = "Usama"; // Another key-value pair
+newUser.isLoggedIn = true; // Boolean property
+console.log(newUser); // Output: { id: '123', name: 'Usama', isLoggedIn: true }
+
+// ✅ Nested Objects
 const regularUser = {
-	email: "usamaabdulwahid14@gmail.com",
-	name: {
-		userFullName: {
-			firstName: "Usama",
-			lastName: "Wahid",
-		},
-		userNickName: "Sami",
-		
-	}
-}
-// console.log(regularUser.name?.userFullName.firstName); //we put question mark at so that it dont throw an error, it acts just like if else 
+  email: "usamaabdulwahid14@gmail.com",
+  name: {
+    userFullName: {
+      firstName: "Usama",
+      lastName: "Wahid",
+    },
+    userNickName: "Sami",
+  },
+};
 
-//Now we going to know to merge two or more objects into a single one
-const obj1 = {1: "a", 2:"b"}
-const obj2 = {3: "a", 4:"b"}
-const obj3 = Object.assign({}, obj1, obj2) //we use assign method in which we merge two objects into new one
-console.log(obj3)
-const obj4 = {...obj1, ...obj2} //we use the spread method just like we did in arrays, we are going to use it 90% of the time
-console.log(obj4)
+// ✅ Optional Chaining (?.)
+// If a property doesn't exist, this prevents errors
+console.log(regularUser.name?.userFullName?.firstName); // Output: "Usama"
 
+// ✅ Merging Objects
 
+const obj1 = { 1: "a", 2: "b" };
+const obj2 = { 3: "c", 4: "d" };
 
-//A very basic implementation of objects in projects is when the data come from backend in form of arrays with object type data
+// ❌ Using Object.assign (Less common way)
+const obj3 = Object.assign({}, obj1, obj2); // Merges obj1 & obj2 into a new empty object
+console.log(obj3); // Output: { 1: 'a', 2: 'b', 3: 'c', 4: 'd' }
+
+// ✅ Using Spread Operator (Preferred way)
+const obj4 = { ...obj1, ...obj2 }; // Merging objects using spread syntax
+console.log(obj4); // Output: { 1: 'a', 2: 'b', 3: 'c', 4: 'd' }
+
+// ✅ Real-World Example: Data from Backend (Array of Objects)
 const userData = [
-	{
-		user: "Sami"
-	},
-	{},
-	{},
-]
-console.log(userData[0].user)
+  {
+    user: "Sami", // First user object
+  },
+  {}, // Empty object
+  {}, // Empty object
+];
+console.log(userData[0].user); // Output: "Sami" (Accessing the first object's "user" property)
 
-//Some other methods for objects are as follows
-console.log(Object.keys(regularUser)) //to get keys of the object, returns an array
-console.log(Object.values(regularUser)) //to get values of the object, returns an array 
-console.log(Object.entries(regularUser)) //to get the object into an array
+// ✅ Useful Object Methods
 
-console.log(regularUser.hasOwnProperty("isLoggedIn"))
+// 1️⃣ Get an array of object keys
+console.log(Object.keys(regularUser)); // Output: [ 'email', 'name' ]
+
+// 2️⃣ Get an array of object values
+console.log(Object.values(regularUser)); // Output: [ 'usamaabdulwahid14@gmail.com', { name object } ]
+
+// 3️⃣ Convert object into an array of [key, value] pairs
+console.log(Object.entries(regularUser)); 
+// Output: [ ['email', 'usamaabdulwahid14@gmail.com'], ['name', {name object}] ]
+
+// 4️⃣ Check if an object has a specific property
+console.log(regularUser.hasOwnProperty("isLoggedIn")); // Output: false (Property does not exist)
+
+// ✅ Object Destructuring & Renaming Variables
+
+const course = {
+  fee: 999, // Course fee
+  instructor: "Usama", // Instructor name
+};
+
+// Destructuring with renaming: instructor → teacher
+const { instructor: teacher } = course;
+
+console.log(teacher); // Output: "Usama"
+
